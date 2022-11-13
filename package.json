@@ -1,0 +1,16 @@
+{
+  "name": "serlo-local-dev-env",
+  "version": "0.0.0",
+  "repository": "git@github.com:serlo/local-dev-env.git",
+  "author": "Serlo Education e.V.",
+  "license": "Apache License 2.0",
+  "scripts": {
+    "start": "docker-compose up",
+    "start:chat": "docker-compose -f docker-compose.yml -f docker-compose.chat.yml up",
+    "start:detach": "yarn start -d",
+    "stop": "docker-compose down",
+    "kratos:new-user": "./kratos/new-user.sh",
+    "hydra:prepare": "./kratos/prepare.sh",
+    "kratos:rebuild": "docker-compose up -d --force-recreate --no-deps --build kratos"
+  }
+}
