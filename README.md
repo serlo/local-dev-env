@@ -37,7 +37,10 @@ Kratos has to be rebuilt every time you change an email template. Use the follow
 3. Test the verification or the recovery email at `localhost:4436`. Repeat the process.
 
 ## Developing with Rocket Chat
-`yarn start:chat`
+```
+yarn start:chat
+./prepare.sh
+```
 Rocket chat will be available in `localhost:3030`.
 <!-- You can log in as admin using the username `dev` and password `123456`. -->
 Also go to your frontend directory and run:
