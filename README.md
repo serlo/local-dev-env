@@ -32,7 +32,7 @@ In case of registering new user head to `localhost:4436` to get the verification
 
 Kratos has to be rebuilt every time you change an email template. Use the following workflow:
 
-1. Edit an template.
+1. Edit templates.
 2. Run `yarn kratos:rebuild`
 3. Test the verification or the recovery email at `localhost:4436`. Repeat the process.
 
