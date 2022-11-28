@@ -39,10 +39,10 @@ Kratos has to be rebuilt every time you change an email template. Use the follow
 ## Developing with Rocket Chat
 ```
 yarn start:chat
-./prepare.sh
+./prepare.sh # <- Important!
 ```
 Rocket chat will be available in `localhost:3030`.
-<!-- You can log in as admin using the username `dev` and password `123456`. -->
+You can log in as admin using the username `dev` and password `123456`.
 Also go to your frontend directory and run:
 ```console
 sed -i 's/https:\/\/community.serlo.org\//http:\/\/localhost:3030\//g' src/data/de/menu-data.ts
