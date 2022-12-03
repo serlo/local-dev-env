@@ -1,0 +1,1 @@
+function(ctx) { email_address: ctx.identity.traits.email, status: "subscribed" }

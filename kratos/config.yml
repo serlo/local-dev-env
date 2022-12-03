@@ -45,12 +45,28 @@ selfservice:
               url: http://host.docker.internal:3001/kratos/register
               method: POST
               body: file:///etc/config/kratos/register_legacy.jsonnet
+              can_interrupt: true
               auth:
                 type: api_key
                 config:
                   name: x-kratos-key
                   value: api.serlo.org-kratos-secret
                   in: header
+          - hook: web_hook
+            config:
+              url: # Fill it with your data https://??.api.mailchimp.com/3.0/lists/??/members 
+              method: POST
+              body: file:///etc/config/kratos/add_to_newsletter.jsonnet
+              can_interrupt: false
+              response:
+                ignore: true
+              auth:
+                type: api_key
+                config:
+                  name: Authorization
+                  value: Bearer # Fill it with your data
+                  in: header
+
     verification:
       enabled: true
       ui_url: http://localhost:3000/auth/verification

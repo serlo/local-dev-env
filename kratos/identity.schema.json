@@ -23,6 +23,9 @@
           },
           "pattern": "^[\\w\\-]+$"
         },
+        "newsletterOptIn": {
+          "type": "boolean"
+        },
         "description": {
           "type": "string"
         },
