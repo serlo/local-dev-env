@@ -1,1 +1,1 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"unique":true,"key":{"email":{"$numberInt":"1"}},"name":"email_1"}],"uuid":"c4ad7ea72e3b4062a1855d221219bfcd","collectionName":"rocketchat_email_inbox","type":"collection"}
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"unique":true,"key":{"email":{"$numberInt":"1"}},"name":"email_1"}],"uuid":"0b7288722a854275a4f50de75b7fe10e","collectionName":"rocketchat_email_inbox","type":"collection"}

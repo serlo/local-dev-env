@@ -1,1 +1,1 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"unique":true,"key":{"uniqueId":{"$numberInt":"1"}},"name":"uniqueId_1"}],"uuid":"e5bc6b4a4d614d748a1375728500c5ed","collectionName":"pbx_events","type":"collection"}
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"unique":true,"key":{"uniqueId":{"$numberInt":"1"}},"name":"uniqueId_1"}],"uuid":"4c97779f434a4c0b870b57b6be769708","collectionName":"pbx_events","type":"collection"}
