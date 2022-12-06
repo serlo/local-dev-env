@@ -4,6 +4,8 @@ echo
 echo 'Registering frontend and rocket chat as clients in hydra'
 echo
 
+sleep 30
+
 docker-compose exec hydra hydra clients delete rocket.chat --endpoint http://hydra:4445
 
 docker-compose exec hydra \

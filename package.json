@@ -5,8 +5,9 @@
   "author": "Serlo Education e.V.",
   "license": "Apache License 2.0",
   "scripts": {
+    "_chat": "docker-compose -f docker-compose.yml -f docker-compose.chat.yml up",
     "start": "docker-compose up",
-    "start:chat": "docker-compose -f docker-compose.yml -f docker-compose.chat.yml up",
+    "start:chat": "yarn _chat -d && ./prepare.sh && yarn _chat",
     "start:detach": "yarn start -d",
     "stop": "docker-compose -f docker-compose.yml -f docker-compose.chat.yml down",
     "kratos:new-user": "./kratos/new-user.sh",

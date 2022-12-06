@@ -39,7 +39,6 @@ Kratos has to be rebuilt every time you change an email template. Use the follow
 ## Developing with Rocket Chat
 ```
 yarn start:chat
-./prepare.sh # <- Important!
 ```
 Rocket chat will be available in `localhost:3030`.
 You can log in as admin using the username `dev` and password `123456`.
