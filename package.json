@@ -7,10 +7,11 @@
   "scripts": {
     "_chat": "docker-compose -f docker-compose.yml -f docker-compose.chat.yml up",
     "start": "docker-compose up",
-    "start:chat": "yarn _chat -d && ./prepare.sh && yarn _chat",
+    "start:chat": "yarn _chat -d && ./prepare.sh ; yarn _chat",
     "start:detach": "yarn start -d",
     "stop": "docker-compose -f docker-compose.yml -f docker-compose.chat.yml down",
     "kratos:new-user": "./kratos/new-user.sh",
+    "kratos:import-users": "docker-compose -f docker-compose.yml -f kratos/docker-compose.import-users-job.yml up",
     "hydra:prepare": "./kratos/prepare.sh",
     "kratos:rebuild": "docker-compose up -d --force-recreate --no-deps --build kratos"
   }
