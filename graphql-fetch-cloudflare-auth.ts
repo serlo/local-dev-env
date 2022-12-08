@@ -36,7 +36,7 @@ export function createAuthAwareGraphqlFetch(
     return await executeQuery()
 
     function executeQuery() {
-      const serviceToken = jwt.sign({}, "serlo.org-secret", {
+      const serviceToken = jwt.sign({}, 'serlo.org-secret', {
         audience: 'api.serlo.org',
         issuer: 'serlo.org',
       })
@@ -46,7 +46,7 @@ export function createAuthAwareGraphqlFetch(
               Authorization: `Serlo Service=${serviceToken}`,
             }
           : {},
-        credentials: 'include'
+        credentials: 'include',
       })
       return client.request(query, variables)
     }

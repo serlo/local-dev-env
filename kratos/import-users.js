@@ -47,7 +47,9 @@ connection.connect(async (error) => {
 
   connection.query('SELECT * FROM user', async (error, result) => {
     if (error) throw error
-    const usersWithValidUsername = result.filter(user => user.username.match(/^[\w\-]+$/g))
+    const usersWithValidUsername = result.filter((user) =>
+      user.username.match(/^[\w\-]+$/g)
+    )
     await importUsers(usersWithValidUsername)
     console.log('Successful Import of Users')
     process.exit(0)

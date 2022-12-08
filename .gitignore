@@ -30,3 +30,6 @@ tsconfig.tsbuildinfo
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# dev sandbox
+/develop
