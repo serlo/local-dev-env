@@ -58,6 +58,18 @@ class HashService {
 
     return sha.join('')
   }
+
+  convertToPHC(hashedPassword) {
+    const passwordSaltBase64 = Buffer.from(
+      this.findSalt(hashedPassword)
+    ).toString('base64')
+    const hashedPasswordBase64 = Buffer.from(
+      this.findSha(hashedPassword),
+      'hex'
+    ).toString('base64')
+    // [p]assword[f]ormat = {SALT}{PASSWORD}
+    return `$sha1$pf=e1NBTFR9e1BBU1NXT1JEfQ==$${passwordSaltBase64}$${hashedPasswordBase64}`
+  }
 }
 
 const hashService = new HashService()
@@ -73,9 +85,12 @@ if (require.main === module) {
     case 'sha':
       console.log(hashService.findSha(process.argv[3]))
       break
+    case 'phc':
+      console.log(hashService.convertToPHC(process.argv[3]))
+      break
     default:
       console.log(
-        'use `hash [string] [optional salt] ` or `find [hashed password]`'
+        'use `hash [string] [optional salt] `, `find [hashed password]` or `phc [hashed password]`'
       )
   }
 }

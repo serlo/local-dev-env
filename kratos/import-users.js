@@ -56,13 +56,6 @@ connection.connect(async (error) => {
 
 async function importUsers(users) {
   for (const legacyUser of users) {
-    const passwordSaltBase64 = Buffer.from(
-      hashService.findSalt(legacyUser.password)
-    ).toString('base64')
-    const hashedPasswordBase64 = Buffer.from(
-      hashService.findSha(legacyUser.password),
-      'hex'
-    ).toString('base64')
     const user = {
       traits: {
         username: legacyUser.username,
@@ -72,8 +65,7 @@ async function importUsers(users) {
       credentials: {
         password: {
           config: {
-            // [p]assword[f]ormat = {SALT}{PASSWORD}
-            hashed_password: `$sha1$pf=e1NBTFR9e1BBU1NXT1JEfQ==$${passwordSaltBase64}$${hashedPasswordBase64}`,
+            hashed_password: hashService.convertToPHC(legacyUser.password),
           },
         },
       },
