@@ -6,11 +6,15 @@
   "license": "Apache License 2.0",
   "scripts": {
     "format": "yarn prettier . --write",
-    "hydra:prepare": "./kratos/prepare.sh",
+    "hydra:prepare": "./prepare.sh",
+    "kratos": "yarn start:only:kratos",
     "kratos:import-users": "docker-compose -f docker-compose.yml -f kratos/docker-compose.import-users-job.yml up",
     "kratos:new-user": "./kratos/new-user.sh",
     "kratos:rebuild": "docker-compose up -d --force-recreate --no-deps --build kratos",
     "start": "./start.sh --without rocket-chat",
+    "start:without:api": "./start.sh --without rocket-chat,api",
+    "start:without:db-layer": "./start.sh --without rocket-chat,db-layer",
+    "start:only:kratos": "docker-compose up",
     "start:chat": "./start.sh -d && ./prepare.sh ; ./start.sh # TODO: workaround, improve",
     "start:detach": "./start.sh -d",
     "stop": "./stop.sh"
