@@ -1,0 +1,25 @@
+version: '3.7'
+services:
+  mysql:
+    image: mysql:5.7
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+    networks:
+      - intranet
+  db-layer:
+    image: eu.gcr.io/serlo-shared/serlo-org-database-layer:0.3.56
+    depends_on:
+      - mysql
+    ports:
+      - '8080:8080'
+    command: ./server
+    environment:
+      - DATABASE_MAX_CONNECTIONS=5
+      - DATABASE_URL=mysql://root:secret@mysql:3306/serlo
+      - ENV=development
+    networks:
+      - intranet

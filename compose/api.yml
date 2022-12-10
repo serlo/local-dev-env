@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  redis:
+    image: redis:6.0
+    restart: always
+    ports:
+      - '6379:6379'
+    networks:
+      - intranet
+  api:
+    image: eu.gcr.io/serlo-shared/api-server:0.48.0-staging.1
+    command: yarn start
+    depends_on:
+      - redis
+    ports:
+      - '3001:3001'
+    environment:
+      - ENVIRONMENT="local"
+      - REDIS_URL=redis://redis:6379
+      - SERLO_ORG_DATABASE_LAYER_HOST=db-layer:8080
+      - SERLO_ORG_SECRET=serlo.org-secret
+      - SERVER_HYDRA_HOST=http://hydra:4445
+      - SERVER_KRATOS_PUBLIC_HOST=http://kratos:4433
+      - SERVER_KRATOS_ADMIN_HOST=http://kratos:4434
+      - SERVER_KRATOS_SECRET=api.serlo.org-kratos-secret
+      - SERVER_SERLO_CLOUDFLARE_WORKER_SECRET="api.serlo.org-playground-secret"
+      - SERVER_SERLO_CACHE_WORKER_SECRET="api.serlo.org-cache-worker-secret"
+      - SERVER_SWR_QUEUE_DASHBOARD_PASSWORD="secret"
+    networks:
+      - intranet

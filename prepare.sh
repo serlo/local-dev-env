@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo
-echo 'Registering frontend and rocket chat as clients in hydra'
+echo 'Registering rocket chat as client in hydra'
 echo
 
 sleep 30

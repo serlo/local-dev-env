@@ -5,16 +5,15 @@
   "author": "Serlo Education e.V.",
   "license": "Apache License 2.0",
   "scripts": {
-    "_chat": "docker-compose -f docker-compose.yml -f docker-compose.chat.yml up",
     "format": "yarn prettier . --write",
     "hydra:prepare": "./kratos/prepare.sh",
     "kratos:import-users": "docker-compose -f docker-compose.yml -f kratos/docker-compose.import-users-job.yml up",
     "kratos:new-user": "./kratos/new-user.sh",
     "kratos:rebuild": "docker-compose up -d --force-recreate --no-deps --build kratos",
-    "start": "docker-compose up",
-    "start:chat": "yarn _chat -d && ./prepare.sh ; yarn _chat",
-    "start:detach": "yarn start -d",
-    "stop": "docker-compose -f docker-compose.yml -f docker-compose.chat.yml down"
+    "start": "./start.sh --without rocket-chat",
+    "start:chat": "./start.sh -d && ./prepare.sh ; ./start.sh # TODO: workaround, improve",
+    "start:detach": "./start.sh -d",
+    "stop": "./stop.sh"
   },
   "dependencies": {},
   "devDependencies": {
