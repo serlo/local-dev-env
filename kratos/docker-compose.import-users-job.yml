@@ -1,4 +1,3 @@
-# TODO: make a more robust script for it
 version: '3.7'
 services:
   import-users-job:
