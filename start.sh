@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export $(grep -v '^#' .env | xargs)
+
 trap compose_down INT
 
 function compose_down() {
@@ -24,10 +26,7 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-echo $WITHOUT_SERVICES
-
 IFS=',' read -r -a WITHOUT_SERVICES <<< $WITHOUT_SERVICES
-echo ${WITHOUT_SERVICES[1]}
 
 API_COMPOSE_FILE='-f compose/api.yml'
 DB_LAYER_COMPOSE_FILE='-f compose/db-layer.yml'

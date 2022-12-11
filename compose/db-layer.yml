@@ -11,7 +11,7 @@ services:
     networks:
       - intranet
   db-layer:
-    image: eu.gcr.io/serlo-shared/serlo-org-database-layer:0.3.56
+    image: eu.gcr.io/serlo-shared/serlo-org-database-layer:${DB_LAYER_VERSION}
     depends_on:
       - mysql
     ports:
