@@ -1,1 +1,1 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"domain":{"$numberInt":"1"}},"name":"domain_1"}],"uuid":"9c9fff3766a546bcb02e46a1d8040a23","collectionName":"rocketchat_federation_servers","type":"collection"}
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"domain":{"$numberInt":"1"}},"name":"domain_1"}],"uuid":"6800fbfce84544bfbae3a52ecb30ae90","collectionName":"rocketchat_federation_servers","type":"collection"}

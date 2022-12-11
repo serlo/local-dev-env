@@ -1,1 +1,1 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"54adbf1a3ebf4d71aa515fd82ab02e08","collectionName":"rocketchat_permissions","type":"collection"}
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"7467f630f2e54fd2bebeb7d03f7c04ef","collectionName":"rocketchat_permissions","type":"collection"}
