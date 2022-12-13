@@ -8,7 +8,7 @@
     "format": "yarn prettier . --write",
     "hydra:prepare": "./prepare.sh",
     "kratos": "yarn start:only:kratos",
-    "kratos:import-users": "docker-compose -f docker-compose.yml -f kratos/docker-compose.import-users-job.yml up",
+    "kratos:import-users": "RUN_IN_DOCKER=1 docker-compose -f docker-compose.yml -f compose/db-layer.yml -f kratos/docker-compose.import-users-job.yml up",
     "kratos:new-user": "./kratos/new-user.sh",
     "kratos:rebuild": "docker-compose up -d --force-recreate --no-deps --build kratos",
     "mongo:dump": "docker-compose exec -u root mongodb mongodump && docker-compose cp mongodb:/dump .",

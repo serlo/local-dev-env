@@ -4,9 +4,11 @@ const V0alpha2Api = require('@ory/client').V0alpha2Api
 const hashService = require('./legacy-password-hash-service').hashService
 
 const config = {
-  kratosHost: 'http://kratos:4434',
+  kratosHost: process.env.RUN_IN_DOCKER
+    ? 'http://kratos:4434'
+    : 'http://localhost:4433',
   db: {
-    host: 'host.docker.internal',
+    host: process.env.RUN_IN_DOCKER ? 'host.docker.internal' : 'localhost',
     user: 'root',
     password: 'secret',
     database: 'serlo',

@@ -11,6 +11,8 @@ services:
     working_dir: /tmp
     # TODO: update to a more up-to-date @ory/client version
     command: "bash -c 'yarn init --yes && yarn add js-sha1 mysql @ory/client@0.2.0-alpha.4 && node import-users.js'"
+    environment:
+      - RUN_IN_DOCKER=${RUN_IN_DOCKER}
     restart: on-failure
     networks:
       - intranet
