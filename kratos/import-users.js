@@ -42,9 +42,12 @@ connection.connect(async (error) => {
   }
 
   if (allIdentities) {
-    allIdentities.map(async (identity) => {
-      await kratos.adminDeleteIdentity(identity.id)
-    })
+    await Promise.all(
+      allIdentities.map(async (identity) => {
+        await kratos.adminDeleteIdentity(identity.id)
+        console.log(identity.traits.username + ' was deleted')
+      })
+    )
   }
 
   connection.query('SELECT * FROM user', async (error, result) => {
