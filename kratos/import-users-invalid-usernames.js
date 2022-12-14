@@ -19,10 +19,13 @@ async function importUsersWithInvalidUsernames(users) {
   for (const legacyUser of users) {
     const newUsername = legacyUser.username
       .replaceAll('.', '-')
-      .replace('Ã¼', 'ue')
-      .replace('Ã¶', 'oe')
-      .replace('Ã¤', 'ae')
-      .replace('@', '-')
+      .replaceAll('Ã¼', 'ue')
+      .replaceAll('Ã¶', 'oe')
+      .replaceAll('Ã¤', 'ae')
+      .replaceAll('Ãœ', 'Ue')
+      .replaceAll('ÃŸ', 'ss')
+      .replaceAll('@', '-')
+
     const user = {
       traits: {
         username: newUsername,
@@ -50,7 +53,7 @@ async function importUsersWithInvalidUsernames(users) {
       'Importing user ' + newUsername + ' previously ' + legacyUser.username
     )
     await kratos.adminCreateIdentity(user).catch((error) => {
-      throw new Error(error.message + ' while importing ' + legacyUser.username)
+      throw new Error(error.message + ' while importing ' + legacyUser.id)
     })
   }
 }
