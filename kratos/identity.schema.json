@@ -21,20 +21,13 @@
           "ory.sh/kratos": {
             "credentials": { "password": { "identifier": true } }
           },
-          "pattern": "^[\\w\\-]+$"
+          "pattern": "^[\\w\\-]+$",
+          "maxLength": 32
         },
-        "description": {
-          "type": "string"
-        },
-        "motivation": {
-          "type": "string"
-        },
-        "profile_image": {
-          "type": "string"
-        },
-        "language": {
-          "type": "string"
-        }
+        "description": { "type": "string" },
+        "motivation": { "type": "string" },
+        "profile_image": { "type": "string" },
+        "language": { "type": "string" }
       },
       "required": ["email", "username"],
       "additionalProperties": false
