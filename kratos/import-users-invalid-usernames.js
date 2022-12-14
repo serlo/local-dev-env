@@ -1,43 +1,31 @@
-const { connection, kratos } = require('./import-users-config')
 const hashService = require('./legacy-password-hash-service').hashService
+const { connection, kratos } = require('./import-users-config')
 
 connection.connect(async (error) => {
   if (error) throw error
 
-  let allIdentities = []
-
-  for (let page = 1; true; page++) {
-    const data = await kratos
-      .adminListIdentities(10, page)
-      .then(({ data }) => data)
-    if (!data.length) break
-    allIdentities = [...allIdentities, ...data]
-  }
-  if (allIdentities) {
-    await Promise.all(
-      allIdentities.map(async (identity) => {
-        await kratos.adminDeleteIdentity(identity.id)
-        console.log(identity.traits.username + ' was deleted')
-      })
-    )
-  }
-
   connection.query('SELECT * FROM user', async (error, result) => {
     if (error) throw error
-    const usersWithValidUsername = result.filter((user) =>
-      user.username.match(/^[\w\-]+$/g)
+    const usersWithValidUsername = result.filter(
+      (user) => !user.username.match(/^[\w\-]+$/g)
     )
-    await importUsers(usersWithValidUsername)
+    await importUsersWithInvalidUsernames(usersWithValidUsername)
     console.log('Successful Import of Users')
     process.exit(0)
   })
 })
 
-async function importUsers(users) {
+async function importUsersWithInvalidUsernames(users) {
   for (const legacyUser of users) {
+    const newUsername = legacyUser.username
+      .replaceAll('.', '-')
+      .replace('Ã¼', 'ue')
+      .replace('Ã¶', 'oe')
+      .replace('Ã¤', 'ae')
+      .replace('@', '-')
     const user = {
       traits: {
-        username: legacyUser.username,
+        username: newUsername,
         email: legacyUser.email,
         description: legacyUser.description || '',
       },
@@ -58,7 +46,11 @@ async function importUsers(users) {
         },
       ],
     }
-    console.log('Importing user ' + legacyUser.username)
-    await kratos.adminCreateIdentity(user)
+    console.log(
+      'Importing user ' + newUsername + ' previously ' + legacyUser.username
+    )
+    await kratos.adminCreateIdentity(user).catch((error) => {
+      throw new Error(error.message + ' while importing ' + legacyUser.username)
+    })
   }
 }
