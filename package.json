@@ -4,6 +4,7 @@
   "repository": "git@github.com:serlo/local-dev-env.git",
   "author": "Serlo Education e.V.",
   "license": "Apache License 2.0",
+  "type": "module",
   "scripts": {
     "format": "yarn prettier . --write",
     "hydra:prepare": "./prepare.sh",
@@ -12,6 +13,10 @@
     "kratos:new-user": "./kratos/new-user.sh",
     "kratos:rebuild": "docker-compose up -d --force-recreate --no-deps --build kratos",
     "mongo:dump": "docker-compose exec -u root mongodb mongodump && docker-compose cp mongodb:/dump .",
+    "mysql": "docker-compose exec mysql mysql --user=root --password=secret serlo",
+    "mysql:dump": "ts-node --experimental-specifier-resolution=node scripts/mysql-dump",
+    "mysql:import-anonymous-data": "ts-node --experimental-specifier-resolution=node scripts/mysql-import-anonymous-data",
+    "mysql:rollback": "ts-node --experimental-specifier-resolution=node scripts/mysql-rollback",
     "start": "./start.sh --without rocket-chat",
     "start:without:api": "./start.sh --without rocket-chat,api",
     "start:without:db-layer": "./start.sh --without rocket-chat,db-layer",
@@ -22,10 +27,10 @@
   },
   "dependencies": {
     "@ory/client": "0.2.0-alpha.4",
+    "@types/node": "^18.11.15",
     "js-sha1": "^0.6.0",
-    "mysql": "^2.18.1"
-  },
-  "devDependencies": {
-    "prettier": "^2.8.1"
+    "prettier": "^2.8.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
   }
 }
