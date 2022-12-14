@@ -2,9 +2,8 @@
   "name": "serlo-local-dev-env",
   "version": "0.0.0",
   "repository": "git@github.com:serlo/local-dev-env.git",
-  "author": "Serlo Education e.V.",
   "license": "Apache License 2.0",
-  "type": "module",
+  "author": "Serlo Education e.V.",
   "scripts": {
     "format": "yarn prettier . --write",
     "hydra:prepare": "./prepare.sh",
@@ -18,18 +17,21 @@
     "mysql:import-anonymous-data": "ts-node --experimental-specifier-resolution=node scripts/mysql-import-anonymous-data",
     "mysql:rollback": "ts-node --experimental-specifier-resolution=node scripts/mysql-rollback",
     "start": "./start.sh --without rocket-chat",
-    "start:without:api": "./start.sh --without rocket-chat,api",
-    "start:without:db-layer": "./start.sh --without rocket-chat,db-layer",
-    "start:only:kratos": "docker-compose up",
     "start:chat": "./start.sh -d && ./prepare.sh ; ./start.sh # TODO: workaround, improve",
     "start:detach": "./start.sh -d",
+    "start:only:kratos": "docker-compose up",
+    "start:without:api": "./start.sh --without rocket-chat,api",
+    "start:without:db-layer": "./start.sh --without rocket-chat,db-layer",
     "stop": "./stop.sh"
   },
   "dependencies": {
     "@ory/client": "0.2.0-alpha.4",
     "@types/node": "^18.11.15",
     "js-sha1": "^0.6.0",
+    "mysql": "^2.18.1",
     "prettier": "^2.8.1",
+    "prettier-plugin-packagejson": "^2.3.0",
+    "prettier-plugin-sh": "^0.12.8",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
   }

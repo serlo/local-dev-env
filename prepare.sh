@@ -24,7 +24,7 @@ echo
 echo 'Dumping a basic preconfigured database for rocket chat'
 echo
 
-docker-compose exec --user root mongodb  mongorestore --drop --quiet /dump/
+docker-compose exec --user root mongodb mongorestore --drop --quiet /dump/
 
 # TODO: extract to other script
 # echo

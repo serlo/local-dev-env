@@ -5,21 +5,21 @@ export $(grep -v '^#' .env | xargs)
 trap compose_down INT
 
 function compose_down() {
-   echo 'stopping docker-compose'
-   ./stop.sh
+  echo 'stopping docker-compose'
+  ./stop.sh
 }
 
 while [[ $# -gt 0 ]]; do
   case $1 in
-    -n|--no|--without)
+    -n | --no | --without)
       WITHOUT_SERVICES="$2"
       shift 2
       ;;
-    -d|--detach)
+    -d | --detach)
       DETACH=-d
       shift
       ;;
-    -*|--*)
+    -* | --*)
       echo "Unknown option $1"
       exit 1
       ;;
@@ -33,8 +33,7 @@ DB_LAYER_COMPOSE_FILE='-f compose/db-layer.yml'
 # TODO: add --with-chat, since most probably rocket chat is not wanted
 ROCKET_CHAT_COMPOSE_FILE='-f compose/rocket-chat.yml'
 
-for service in "${WITHOUT_SERVICES[@]}"
-do
+for service in "${WITHOUT_SERVICES[@]}"; do
   case $service in
     api)
       API_COMPOSE_FILE=
