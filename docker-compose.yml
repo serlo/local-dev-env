@@ -1,14 +1,10 @@
 version: '3.7'
 services:
   kratos-migrate:
+    depends_on:
+      - postgres
     image: eu.gcr.io/serlo-shared/kratos:next
-    environment:
-      - DSN=sqlite:///var/lib/sqlite/db.sqlite?_fk=true&mode=rwc
     volumes:
-      - type: volume
-        source: kratos-sqlite
-        target: /var/lib/sqlite
-        read_only: false
       - type: bind
         source: ./kratos
         target: /etc/config/kratos
@@ -25,14 +21,9 @@ services:
       - '4434:4434' # admin
     restart: unless-stopped
     environment:
-      - DSN=sqlite:///var/lib/sqlite/db.sqlite?_fk=true
       - LOG_LEVEL=trace
     command: serve -c /etc/config/kratos/config.yml --dev --watch-courier
     volumes:
-      - type: volume
-        source: kratos-sqlite
-        target: /var/lib/sqlite
-        read_only: false
       - type: bind
         source: ./kratos
         target: /etc/config/kratos
@@ -40,6 +31,16 @@ services:
       - intranet
     extra_hosts:
       - 'host.docker.internal:host-gateway'
+  postgres:
+    image: postgres:9.6
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=serlo
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=kratos
+    networks:
+      - intranet
   mailslurper:
     # TODO: use image: marcopas/docker-mailslurper:latest or another maintained project
     image: oryd/mailslurper:latest-smtps

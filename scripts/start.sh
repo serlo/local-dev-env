@@ -6,7 +6,7 @@ trap compose_down INT
 
 function compose_down() {
   echo 'stopping docker-compose'
-  ./stop.sh
+  ./scripts/stop.sh
 }
 
 while [[ $# -gt 0 ]]; do

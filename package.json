@@ -17,6 +17,7 @@
     "mysql:dump": "ts-node --experimental-specifier-resolution=node scripts/mysql-dump",
     "mysql:import-anonymous-data": "ts-node --experimental-specifier-resolution=node scripts/mysql-import-anonymous-data",
     "mysql:rollback": "ts-node --experimental-specifier-resolution=node scripts/mysql-rollback",
+    "postgres": "docker-compose exec postgres psql -U serlo -d kratos",
     "start": "./scripts/start.sh --without rocket-chat",
     "start:chat": "./scripts/start.sh -d && ./scripts/prepare_rocketchat.sh ; ./scripts/start.sh # TODO: workaround, improve",
     "start:detach": "./scripts/start.sh -d",
