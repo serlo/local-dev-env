@@ -23,7 +23,8 @@
     "start:only:kratos": "docker-compose up",
     "start:without:api": "./scripts/start.sh --without rocket-chat,api",
     "start:without:db-layer": "./scripts/start.sh --without rocket-chat,db-layer",
-    "stop": "./scripts/stop.sh"
+    "stop": "./scripts/stop.sh",
+    "stop:clear": "./scripts/stop.sh -v"
   },
   "dependencies": {
     "@ory/client": "0.2.0-alpha.4",
