@@ -5,8 +5,6 @@ dsn: memory
 serve:
   public:
     base_url: http://localhost:4433/
-    cors:
-      enabled: true
   admin:
     base_url: http://localhost:4434/
 
