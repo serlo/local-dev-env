@@ -4,7 +4,6 @@
   "repository": "git@github.com:serlo/local-dev-env.git",
   "license": "Apache License 2.0",
   "author": "Serlo Education e.V.",
-  "type": "module",
   "scripts": {
     "format": "yarn prettier . --write",
     "hydra:prepare": "./scripts/prepare_rocketchat.sh",
