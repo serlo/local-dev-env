@@ -16,7 +16,7 @@ Requirements:
 ## Integrating local Serlo frontend
 
 1. `cd $YOUR_FRONTEND_DIR`
-2. Make sure to use the local environment in `.env.local`
+2. Make sure to use the local environment in `.env`
 
 ```
 NEXT_PUBLIC_ENV=local
@@ -24,9 +24,9 @@ NEXT_PUBLIC_ENV=local
 ```
 
 3. `yarn dev`
-   _Note: if you change `.env.local`, you have to rerun `yarn dev`_
+   _Note: every time you change `.env`, you have to rerun `yarn dev`_
 
-4. cd back to this repo directory and `cp graphql-fetch-cloudflare-auth.ts "$YOUR_FRONTEND_DIR/src/api/graphql-fetch.ts"` <- important for doing authenticated actions, but _do not commit this change!_
+4. cd back to this repo directory and `cp graphql-fetch-cloudflare-auth.ts "$YOUR_FRONTEND_DIR/src/api/graphql-fetch.ts"` <- important for doing authenticated actions, but _do not commit this change in frontend!_, in case you are also working there.
 
 In case of registering new user head to `localhost:4436` to get the verification link.
 
@@ -55,3 +55,5 @@ sed -i 's/https:\/\/community.serlo.org\//http:\/\/localhost:3030\//g' src/data/
 ```
 
 That way the link in menu will redirect you for the local rocket chat. _Do not commit this change!_
+
+
