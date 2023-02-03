@@ -1,5 +1,5 @@
-const hashService = require('./legacy-password-hash-service').hashService
-const { connection, kratos } = require('./import-users-config')
+import { hashService } from './legacy-password-hash-service.js'
+import { connection, kratos } from './import-users-config'
 
 connection.connect(async (error) => {
   if (error) throw error

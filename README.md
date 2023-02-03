@@ -55,5 +55,3 @@ sed -i 's/https:\/\/community.serlo.org\//http:\/\/localhost:3030\//g' src/data/
 ```
 
 That way the link in menu will redirect you for the local rocket chat. _Do not commit this change!_
-
-

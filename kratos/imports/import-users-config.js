@@ -1,8 +1,8 @@
-const mysql = require('mysql')
-const Configuration = require('@ory/client').Configuration
-const V0alpha2Api = require('@ory/client').V0alpha2Api
+import mysql from 'mysql'
+import { Configuration } from '@ory/client'
+import { V0alpha2Api } from '@ory/client'
 
-const config = {
+export const config = {
   kratosHost: process.env.RUN_IN_DOCKER
     ? 'http://kratos:4434'
     : 'http://localhost:4433',
@@ -14,20 +14,15 @@ const config = {
   },
 }
 
-const kratos = new V0alpha2Api(
+export const kratos = new V0alpha2Api(
   new Configuration({
     basePath: config.kratosHost,
   })
 )
 
-const connection = mysql.createConnection({
+export const connection = mysql.createConnection({
   host: config.db.host,
   user: config.db.user,
   password: config.db.password,
   database: config.db.database,
 })
-
-module.exports = {
-  kratos,
-  connection,
-}

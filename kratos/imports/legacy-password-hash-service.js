@@ -1,5 +1,4 @@
-// lib 'js-sha1' has to be installed
-sha1 = require('js-sha1')
+import sha1 from 'js-sha1'
 
 function uniqid(prefix = '', random = false) {
   const sec = Date.now() * 1000 + Math.random() * 1000
@@ -72,29 +71,26 @@ class HashService {
   }
 }
 
-const hashService = new HashService()
+export const hashService = new HashService()
 
-if (require.main === module) {
-  switch (process.argv[2]) {
-    case 'hash':
-      console.log(hashService.hashPassword(process.argv[3], process.argv[4]))
-      break
-    case 'find':
-      console.log(hashService.findSalt(process.argv[3]))
-      break
-    case 'sha':
-      console.log(hashService.findSha(process.argv[3]))
-      break
-    case 'phc':
-      console.log(hashService.convertToPHC(process.argv[3]))
-      break
-    default:
-      console.log(
-        'use `hash [string] [optional salt] `, `find [hashed password]` or `phc [hashed password]`'
-      )
-  }
-}
-
-module.exports = {
-  hashService,
-}
+// TODO: put it in another file in order to make it executable
+// if (require.main === module) {
+//   switch (process.argv[2]) {
+//     case 'hash':
+//       console.log(hashService.hashPassword(process.argv[3], process.argv[4]))
+//       break
+//     case 'find':
+//       console.log(hashService.findSalt(process.argv[3]))
+//       break
+//     case 'sha':
+//       console.log(hashService.findSha(process.argv[3]))
+//       break
+//     case 'phc':
+//       console.log(hashService.convertToPHC(process.argv[3]))
+//       break
+//     default:
+//       console.log(
+//         'use `hash [string] [optional salt] `, `find [hashed password]` or `phc [hashed password]`'
+//       )
+//   }
+// }
