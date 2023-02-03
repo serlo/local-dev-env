@@ -5,7 +5,7 @@ import { V0alpha2Api } from '@ory/client'
 export const config = {
   kratosHost: process.env.RUN_IN_DOCKER
     ? 'http://kratos:4434'
-    : 'http://localhost:4433',
+    : 'http://localhost:4434',
   db: {
     host: process.env.RUN_IN_DOCKER ? 'host.docker.internal' : 'localhost',
     user: 'root',

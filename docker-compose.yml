@@ -5,9 +5,7 @@ services:
       - postgres
     image: eu.gcr.io/serlo-shared/kratos:next
     volumes:
-      - type: bind
-        source: ./kratos
-        target: /etc/config/kratos
+      - ./kratos:/etc/config/kratos:z
     command: -c /etc/config/kratos/config.yml migrate sql -e --yes
     restart: on-failure
     networks:
@@ -24,9 +22,7 @@ services:
       - LOG_LEVEL=trace
     command: serve -c /etc/config/kratos/config.yml --dev --watch-courier
     volumes:
-      - type: bind
-        source: ./kratos
-        target: /etc/config/kratos
+      - ./kratos:/etc/config/kratos:z
     networks:
       - intranet
     extra_hosts:
@@ -35,6 +31,8 @@ services:
     image: postgres:9.6
     ports:
       - '5432:5432'
+    volumes:
+      - postgres-data:/var/lib/postgresql/data/:z
     environment:
       - POSTGRES_USER=serlo
       - POSTGRES_PASSWORD=secret
@@ -53,4 +51,4 @@ networks:
   intranet:
 volumes:
   kratos-sqlite:
-  hydra-sqlite:
+  postgres-data: { driver: local }

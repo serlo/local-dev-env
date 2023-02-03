@@ -64,3 +64,4 @@ networks:
   intranet:
 volumes:
   mongodb_data: { driver: local }
+  hydra-sqlite:
