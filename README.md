@@ -9,7 +9,8 @@ Requirements:
 - Nodejs and Yarn
 
 ```
-`yarn start`
+yarn
+yarn start
 # or `yarn start:detach` to have control of the terminal
 ```
 

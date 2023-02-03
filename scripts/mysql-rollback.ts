@@ -4,7 +4,7 @@ import { IgnoreInsecurePasswordWarning } from './transform'
 
 const mysqlRollbackCmd =
   'mysql --user=root --password="$MYSQL_ROOT_PASSWORD"' +
-  ' < /docker-entrypoint-initdb.d/001-init.sql'
+  ' < /mysql/001-init.sql'
 
 const dockerComposeArgs = ['exec', '-T', 'mysql', 'sh', '-c', mysqlRollbackCmd]
 
