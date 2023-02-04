@@ -32,7 +32,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - postgres-data:/var/lib/postgresql/data/:z
+      - ./postgres:/docker-entrypoint-initdb.d
     environment:
       - POSTGRES_USER=serlo
       - POSTGRES_PASSWORD=secret
@@ -49,6 +49,3 @@ services:
       - intranet
 networks:
   intranet:
-volumes:
-  kratos-sqlite:
-  postgres-data: { driver: local }
