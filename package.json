@@ -18,7 +18,7 @@
     "mysql:import-anonymous-data": "ts-node --experimental-specifier-resolution=node scripts/mysql-import-anonymous-data",
     "mysql:rollback": "ts-node --experimental-specifier-resolution=node scripts/mysql-rollback",
     "postgres": "docker-compose exec postgres psql -U serlo -d kratos",
-    "postgres:dump": "docker-compose exec postgres pg_dump kratos --clean --if-exists --user serlo > 001-init.sql && mv 001-init.sql postgres/",
+    "postgres:dump": "docker-compose exec postgres pg_dump kratos --user serlo > 001-init.sql && mv 001-init.sql postgres/",
     "postgres:rollback": "docker-compose exec -T postgres bash -c 'psql -U serlo kratos < /docker-entrypoint-initdb.d/001-init.sql'",
     "start": "./scripts/start.sh --without rocket-chat",
     "start:chat": "./scripts/start.sh -d && ./scripts/prepare_rocketchat.sh ; ./scripts/start.sh # TODO: workaround, improve",
