@@ -34,6 +34,14 @@ selfservice:
         password:
           hooks:
             - hook: require_verified_address
+            - hook: web_hook
+              config:
+                url: http://host.docker.internal:3001/kratos/updateLastLogin
+                method: POST
+                # TODO: rename jsonnet
+                body: file:///etc/config/kratos/register_legacy.jsonnet
+                response:
+                  ignore: true
     registration:
       ui_url: http://localhost:3000/auth/registration
       after:
