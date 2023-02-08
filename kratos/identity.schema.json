@@ -42,6 +42,10 @@
       "roles": {
         "type": "array of strings",
         "required": true
+      },
+      "lastLogin": {
+        "type": "string",
+        "required": true
       }
     },
     "metadata_admin": {
