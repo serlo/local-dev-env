@@ -36,7 +36,7 @@ connection.connect(async (error) => {
                 state: identity.state,
               })
               console.log(
-                identity.traits.username + "'s last login was imported"
+                `${identity.traits.username}'s last login was imported`
               )
             } else {
               console.log(
