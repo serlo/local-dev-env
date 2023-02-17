@@ -13,7 +13,7 @@ connection.connect(async (error) => {
     if (!data.length) break
     allIdentities = [...allIdentities, ...data]
   }
-  if (allIdentities) {
+  if (allIdentities.length > 0) {
     console.log('Going through Kratos identities.')
     await Promise.all(
       allIdentities.map(async (identity) => {
