@@ -40,14 +40,7 @@ connection.connect(async (error) => {
               )
             } else {
               console.log(
-                'no last login imported for ' +
-                  identity.traits.username +
-                  ' legacy ID ' +
-                  identity.metadata_public.legacy_id +
-                  ', error: ' +
-                  error +
-                  ' result: ' +
-                  JSON.stringify(result)
+                `no last login imported for ${identity.traits.username} legacy ID  ${identity.metadata_public.legacy_id}, error: ${error},  result: ${JSON.stringify(result)}`
               )
             }
           }
