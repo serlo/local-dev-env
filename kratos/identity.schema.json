@@ -27,9 +27,13 @@
         "description": { "type": "string" },
         "motivation": { "type": "string" },
         "profile_image": { "type": "string" },
-        "language": { "type": "string" }
+        "language": { "type": "string" },
+        "interest": {
+          "type": "string",
+          "enum": ["parent", "teacher", "pupil", "student", "other", ""]
+        }
       },
-      "required": ["email", "username"],
+      "required": ["email", "username", "interest"],
       "additionalProperties": false
     },
     "metadata_public": {
