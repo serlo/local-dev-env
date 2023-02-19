@@ -1,19 +1,28 @@
+from dotenv import load_dotenv
 import mysql.connector
+import os
 import psycopg2
+
+load_dotenv()
+
+mysql_connection = None
+postgres_connection = None
 
 try:
     mysql_connection = mysql.connector.connect(
-        host="localhost", database="serlo", user="root", password="secret"
+        host=os.getenv("MYSQL_HOST"),
+        database="serlo",
+        user=os.getenv("MYSQL_USER"),
+        password=os.getenv("MYSQL_PASSWORD"),
     )
     if not mysql_connection.is_connected():
         raise Exception("Could not connect to mysql database")
     postgres_connection = psycopg2.connect(
         database="kratos",
-        host="localhost",
+        host=os.getenv("POSTGRES_HOST"),
         user="serlo",
-        password="secret",
+        password=os.getenv("POSTGRES_PASSWORD"),
     )
-
     mysql_cursor = mysql_connection.cursor()
     # We don't need to check what is in columns `field` and `value`
     # because in legacy all of them are 'interests' and 'teacher' respectively
@@ -31,9 +40,10 @@ try:
         [user_ids],
     )
     postgres_connection.commit()
-except Exception as error:
-    raise error
+except Exception as exception:
+    raise exception
 finally:
-    if mysql_connection.is_connected():
+    if mysql_connection is not None:
         mysql_connection.close()
-    postgres_connection.close()
+    if postgres_connection is not None:
+        postgres_connection.close()

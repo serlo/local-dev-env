@@ -44,7 +44,7 @@ Kratos has to be rebuilt every time you change an email template. Use the follow
 
 ### Writing an import script
 
-We are still the phase of importing data from the legacy database into the kratos one.  
+We are still in the phase of importing data from the legacy database into the kratos one.  
 From now on let's prefer imports using python for the simple reason that
 we want to use the very same script in terraform and terraform template files
 the $ may interfere with javascript $ in string interpolation.
