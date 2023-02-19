@@ -38,8 +38,7 @@ selfservice:
               config:
                 url: http://host.docker.internal:3001/kratos/updateLastLogin
                 method: POST
-                # TODO: rename jsonnet
-                body: file:///etc/config/kratos/register_legacy.jsonnet
+                body: file:///etc/config/kratos/identity_id.jsonnet
                 response:
                   ignore: true
     registration:
@@ -50,7 +49,7 @@ selfservice:
             config:
               url: http://host.docker.internal:3001/kratos/register
               method: POST
-              body: file:///etc/config/kratos/register_legacy.jsonnet
+              body: file:///etc/config/kratos/identity_id.jsonnet
               auth:
                 type: api_key
                 config:
