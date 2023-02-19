@@ -40,7 +40,8 @@ async function importUsers(users) {
         username: legacyUser.username,
         email: legacyUser.email,
         description: legacyUser.description || '',
-        language: 'en',
+        language: '',
+        interest: '',
       },
       credentials: {
         password: {
