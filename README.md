@@ -7,6 +7,7 @@ Requirements:
 - UNIX System
 - Docker and Docker Compose
 - Nodejs and Yarn
+- Python 3 and pip
 
 ```
 yarn
@@ -40,6 +41,24 @@ Kratos has to be rebuilt every time you change an email template. Use the follow
 1. Edit templates.
 2. Run `yarn kratos:rebuild`
 3. Test the verification or the recovery email at `localhost:4436`. Repeat the process.
+
+### Writing an import script
+
+We are still in the phase of importing data from the legacy database into the kratos one.  
+From now on let's prefer imports using python for the simple reason that
+we want to use the very same script in terraform and terraform template files
+the $ may interfere with javascript $ in string interpolation.
+
+```
+$ python3 -m venv .venv
+$ source .venv/bin/activate
+(.venv) $ pip install -r requirements.txt
+(.venv) $ python3 path/to/import/script
+...
+# when you are done
+(.venv) $ deactivate
+$
+```
 
 ## Developing with Rocket Chat
 
