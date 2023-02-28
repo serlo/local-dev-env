@@ -20,6 +20,16 @@ selfservice:
         identifier_similarity_check_enabled: false
     link:
       enabled: true
+    oidc:
+      enabled: true
+      config:
+        providers:
+          - id: nbp
+            provider: generic
+            client_id: nbp
+            client_secret: H8t6WKWtGwFjqNfuAjqxrwCfsdznMAfj
+            issuer_url: http://localhost:9999
+            mapper_url: file://path/to/oidc.jsonnet
 
   flows:
     error:

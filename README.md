@@ -34,6 +34,20 @@ In case of registering new user head to `localhost:4436` to get the verification
 
 ## Developing with Ory Kratos
 
+### Integrating with Keycloak
+
+Keycloak UI is available on `localhost:9999` (username: admin, pw: admin).  
+There you have to configure Serlo as a client.  
+Here you have to adapt the code in `kratos/config.yml`.  
+Run the local frontend (see above) to test.
+
+Documentations:
+
+- Kratos
+  - [configuration](https://www.ory.sh/docs/kratos/reference/configuration)
+  - [General instuctions](https://www.ory.sh/docs/kratos/social-signin/generic) (not applicable for self-hosting)
+- [Keycloak](https://www.keycloak.org/docs/latest/server_admin/index.html#con-server-oidc-uri-endpoints_server_administration_guide)
+
 ### Email templates
 
 Kratos has to be rebuilt every time you change an email template. Use the following workflow:
