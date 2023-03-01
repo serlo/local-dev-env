@@ -1,5 +1,7 @@
 version: v0.7.1-alpha.1
 
+dev: true
+
 dsn: postgres://serlo:secret@postgres:5432/kratos?sslmode=disable&max_conns=20&max_idle_conns=4
 
 serve:
@@ -28,7 +30,7 @@ selfservice:
             provider: generic
             client_id: nbp
             client_secret: H8t6WKWtGwFjqNfuAjqxrwCfsdznMAfj
-            issuer_url: http://localhost:9999
+            issuer_url: http://host.docker.internal:9999/realms/master/protocol/openid-connect
             mapper_url: file://path/to/oidc.jsonnet
 
   flows:
