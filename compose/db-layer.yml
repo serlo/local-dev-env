@@ -14,8 +14,9 @@ services:
     image: eu.gcr.io/serlo-shared/serlo-org-database-layer:${DB_LAYER_VERSION}
     depends_on:
       - mysql
-    ports:
-      - '8080:8080'
+    # TODO: temp disabled. Uncomment after testing code for SSO
+    # ports:
+    # - '8080:8080'
     command: ./server
     environment:
       - DATABASE_MAX_CONNECTIONS=5

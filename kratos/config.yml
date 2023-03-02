@@ -28,10 +28,10 @@ selfservice:
         providers:
           - id: nbp
             provider: generic
-            client_id: nbp
+            client_id: serlo
             client_secret: H8t6WKWtGwFjqNfuAjqxrwCfsdznMAfj
-            issuer_url: http://host.docker.internal:9999/realms/master/protocol/openid-connect
-            mapper_url: file://path/to/oidc.jsonnet
+            issuer_url: http://nbp:8080/realms/master
+            mapper_url: file:///etc/config/kratos/data_mapper.jsonnet
 
   flows:
     error:
