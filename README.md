@@ -39,7 +39,7 @@ In case of registering new user head to `localhost:4436` to get the verification
 First of all add `nbp` as host
 `sudo echo '127.0.0.1	nbp' >> /etc/hosts`
 
-Run `yarn kratos`.
+Run `yarn start`.
 
 Keycloak UI is available on `nbp:8080` (username: admin, pw: admin).  
 There you have to configure Serlo as a client.  
