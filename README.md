@@ -36,21 +36,46 @@ In case of registering new user head to `localhost:4436` to get the verification
 
 ### Integrating with Keycloak
 
-First of all add `nbp` as host
+First of all add `nbp` as host  
 `sudo echo '127.0.0.1	nbp' >> /etc/hosts`
+
+_why do I need it? Kratos makes a request to the url of the oauth2 provider, but since its running inside a container, it can't easily use host port. nbp is a dns that is discoverable for the kratos container, so the host can use it also._
 
 Run `yarn start`.
 
 Keycloak UI is available on `nbp:8080` (username: admin, pw: admin).  
-There you have to configure Serlo as a client.  
-Then you have to adapt the code in `kratos/config.yml`.  
-Run the local frontend (see above) to test.
+There you have to configure Serlo as a client.
 
-Documentations:
+> Client -> Create Client
+>
+> ```
+> id: serlo
+> home and root url: http://localhost:3000
+> redirect uri: http://localhost:4433/self-service/methods/oidc/callback/nbp, http://localhost:3000/auth/login,
+> ```
+
+Get the credentials and go to `kratos/config.yml`:
+
+```yaml
+selfservice:
+  methods:
+    oidc:
+      enabled: true
+      config:
+        providers:
+          - id: nbp
+            provider: generic
+            client_id: serlo
+            client_secret: <put secret here>
+```
+
+Run the local frontend (not forgetting to change in .env to local) to test.
+
+Documentation:
 
 - Kratos
-  - [configuration](https://www.ory.sh/docs/kratos/reference/configuration)
-  - [General instuctions](https://www.ory.sh/docs/kratos/social-signin/generic) (not applicable for self-hosting)
+  - [Configuration File](https://www.ory.sh/docs/kratos/reference/configuration)
+  - [General instructions](https://www.ory.sh/docs/kratos/social-signin/generic) (select 'Ory CLI')
 - [Keycloak](https://www.keycloak.org/docs/latest/server_admin/index.html#con-server-oidc-uri-endpoints_server_administration_guide)
 
 ### Email templates
