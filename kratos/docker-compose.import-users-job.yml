@@ -6,7 +6,7 @@ services:
       - kratos
     image: node:16
     volumes:
-      - ./kratos/imports:/tmp/imports
+      - ./kratos/imports:/tmp/imports:z
     working_dir: /tmp
     # TODO: update to a more up-to-date @ory/client version
     command: "bash -c 'yarn init --yes && yarn add js-sha1 mysql @ory/client@0.2.0-alpha.4 && node imports/import-users.js'"
