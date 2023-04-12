@@ -15,7 +15,7 @@ services:
     depends_on:
       - mysql
     ports:
-    - '8080:8080'
+      - '8080:8080'
     command: ./server
     environment:
       - DATABASE_MAX_CONNECTIONS=5

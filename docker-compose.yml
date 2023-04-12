@@ -47,16 +47,15 @@ services:
       - '4437:4437'
     networks:
       - intranet
-  # TODO: find a better way of dealing with port clash
-  # nbp:
-  #   image: quay.io/keycloak/keycloak:21.0.0
-  #   ports:
-  #     - 8080:8080
-  #   environment:
-  #     - KEYCLOAK_ADMIN=admin
-  #     - KEYCLOAK_ADMIN_PASSWORD=admin
-  #   command: start-dev
-  #   networks:
-  #     - intranet
+  nbp:
+    image: quay.io/keycloak/keycloak:21.0.0
+    ports:
+      - 11111:11111
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    command: ['start-dev', '--http-port=11111']
+    networks:
+      - intranet
 networks:
   intranet:

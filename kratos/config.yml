@@ -22,17 +22,16 @@ selfservice:
         identifier_similarity_check_enabled: false
     link:
       enabled: true
-    # temporarily disabled for the sdk upgrade
-    # oidc:
-    #   enabled: true
-    #   config:
-    #     providers:
-    #       - id: nbp
-    #         provider: generic
-    #         client_id: serlo
-    #         client_secret: H8t6WKWtGwFjqNfuAjqxrwCfsdznMAfj
-    #         issuer_url: http://nbp:8080/realms/master
-    #         mapper_url: file:///etc/config/kratos/data_mapper.jsonnet
+    oidc:
+      enabled: true
+      config:
+        providers:
+          - id: nbp
+            provider: generic
+            client_id: serlo
+            client_secret: H8t6WKWtGwFjqNfuAjqxrwCfsdznMAfj
+            issuer_url: http://nbp:11111/realms/master
+            mapper_url: file:///etc/config/kratos/data_mapper.jsonnet
 
   flows:
     error:

@@ -43,7 +43,7 @@ _why do I need it? Kratos makes a request to the url of the oauth2 provider, but
 
 Run `yarn start`.
 
-Keycloak UI is available on `nbp:8080` (username: admin, pw: admin).  
+Keycloak UI is available on `nbp:11111` (username: admin, pw: admin).  
 There you have to configure Serlo as a client.
 
 > Client -> Create Client
