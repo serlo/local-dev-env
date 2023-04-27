@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 import os
 import psycopg2
+import psycopg2.extras
 import ory_client
 from ory_client.api import identity_api
 import requests
@@ -28,6 +29,8 @@ def main():
             "SELECT * FROM identities WHERE metadata_public IS NULL"
         )
         unsynced_accounts = postgres_cursor.fetchall()
+        print(f"{len(unsynced_accounts)} accounts to be synchronized")
+
         kratos_admin = identity_api.IdentityApi(kratos_client)
 
         for account in unsynced_accounts:
@@ -42,15 +45,38 @@ def main():
                     },
                 },
             )
-            print(response.content)
-            kratos_response = kratos_admin.update_identity(
-                account["id"],
-                update_identity_body={
-                    **account,
-                    "metadata_public": {"legacy_id": response.json()["userId"]},
-                },
+            kratos_response = None
+            if response.status_code == 200:
+                kratos_response = kratos_admin.update_identity(
+                    account["id"],
+                    update_identity_body={
+                        **account,
+                        "metadata_public": {"legacy_id": response.json()["userId"]},
+                    },
+                )
+            else:
+                response = requests.post(
+                    os.getenv("DB_LAYER_HOST"),
+                    json={
+                        "type": "AliasQuery",
+                        "payload": {
+                            "instance": "de",
+                            "path": f"/user/profile/{account['traits']['username']}",
+                        },
+                    },
+                )
+                kratos_response = kratos_admin.update_identity(
+                    account["id"],
+                    update_identity_body={
+                        **account,
+                        "metadata_public": {"legacy_id": response.json()["id"]},
+                    },
+                )
+
+            print(
+                f"{kratos_response['traits']['username']} with legacy_id {kratos_response['metadata_public']['legacy_id']} was created"
             )
-            print(kratos_response)
+        print("Success")
     except Exception as exception:
         raise exception
     finally:
