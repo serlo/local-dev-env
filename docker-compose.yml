@@ -3,7 +3,7 @@ services:
   kratos-migrate:
     depends_on:
       - postgres
-    image: eu.gcr.io/serlo-shared/kratos:0.11.1-custom
+    image: oryd/kratos:v0.13.0
     volumes:
       - ./kratos:/etc/config/kratos:z
     command: -c /etc/config/kratos/config.yml migrate sql -e --yes
@@ -13,7 +13,7 @@ services:
   kratos:
     depends_on:
       - kratos-migrate
-    image: eu.gcr.io/serlo-shared/kratos:0.11.1-custom
+    image: oryd/kratos:v0.13.0
     ports:
       - '4433:4433' # public
       - '4434:4434' # admin

@@ -71,6 +71,21 @@ selfservice:
                   name: x-kratos-key
                   value: api.serlo.org-kratos-secret
                   in: header
+        oidc:
+          hooks:
+            - hook: web_hook
+              config:
+                url: http://host.docker.internal:3001/kratos/register
+                method: POST
+                body: file:///etc/config/kratos/identity_id.jsonnet
+                auth:
+                  type: api_key
+                  config:
+                    name: x-kratos-key
+                    value: api.serlo.org-kratos-secret
+                    in: header
+            - hook: session
+          default_browser_return_url: http://localhost:3000/auth/login
     verification:
       enabled: true
       use: link
