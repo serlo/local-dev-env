@@ -26,7 +26,7 @@ services:
     networks:
       - intranet
   rocketchat:
-    image: registry.rocket.chat/rocketchat/rocket.chat:latest
+    image: registry.rocket.chat/rocketchat/rocket.chat:5.4.1
     restart: on-failure
     environment:
       MONGO_URL: 'mongodb://mongodb:27017/rocketchat?replicaSet=rs0'
