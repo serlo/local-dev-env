@@ -59,6 +59,6 @@ services:
       - intranet
     extra_hosts:
       - 'host.docker.internal:host-gateway'
-      
+
 networks:
   intranet:

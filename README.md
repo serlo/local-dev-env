@@ -106,16 +106,14 @@ $
 
 ## Developing with Rocket Chat
 
-```
+```console
 yarn start:chat
+yarn prepare:rocket-chat
 ```
 
 Rocket chat will be available in `localhost:3030`.
 You can log in as admin using the username `dev` and password `123456`.
-Also go to your frontend directory and run:
 
-```console
-sed -i 's/https:\/\/community.serlo.org\//http:\/\/localhost:3030\//g' src/data/de/menu-data.ts
-```
+Note that while developing you may want to change the links to chat in some files of frontend (`https://community.serlo.org` to `http://localhost:3030`).
 
-That way the link in menu will redirect you for the local rocket chat. _Do not commit this change!_
+When you press Login with Serlo at rocket chat, you will be redirected to a url with hydra, causing error. Change it to localhost and the flow should continue normally.
