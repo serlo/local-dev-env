@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.9'
 services:
   hydra:
     image: oryd/hydra:v1.11.8

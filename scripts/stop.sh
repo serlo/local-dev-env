@@ -1,7 +1,9 @@
 #!/bin/bash
 
-for file in ./compose/*; do
+export $(grep -v '^#' .env | xargs)
+
+for file in ./docker/*; do
   compose_files+="$compose_files -f $file"
 done
 
-docker-compose -f docker-compose.yml $compose_files down --remove-orphans $@
+docker-compose $compose_files down --remove-orphans $@

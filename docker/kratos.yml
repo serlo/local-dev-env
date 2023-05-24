@@ -1,11 +1,11 @@
-version: '3.7'
+version: '3.9'
 services:
   kratos-migrate:
     depends_on:
       - postgres
     image: oryd/kratos:v0.13.0
     volumes:
-      - ./kratos:/etc/config/kratos:z
+      - ../kratos:/etc/config/kratos:z
     command: -c /etc/config/kratos/config.yml migrate sql -e --yes
     restart: on-failure
     networks:
@@ -22,7 +22,7 @@ services:
       - LOG_LEVEL=trace
     command: serve -c /etc/config/kratos/config.yml --dev --watch-courier
     volumes:
-      - ./kratos:/etc/config/kratos:z
+      - ../kratos:/etc/config/kratos:z
     networks:
       - intranet
     extra_hosts:
@@ -32,7 +32,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - ./postgres:/docker-entrypoint-initdb.d:z
+      - ../postgres:/docker-entrypoint-initdb.d:z
     environment:
       - POSTGRES_USER=serlo
       - POSTGRES_PASSWORD=secret
@@ -59,6 +59,3 @@ services:
       - intranet
     extra_hosts:
       - 'host.docker.internal:host-gateway'
-
-networks:
-  intranet:
