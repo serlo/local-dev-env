@@ -1,15 +1,5 @@
 version: '3.9'
 services:
-  mysql:
-    image: mysql:5.7
-    ports:
-      - '3306:3306'
-    volumes:
-      - ../mysql:/docker-entrypoint-initdb.d:z
-    environment:
-      - MYSQL_ROOT_PASSWORD=secret
-    networks:
-      - intranet
   db-layer:
     image: eu.gcr.io/serlo-shared/serlo-org-database-layer:${DB_LAYER_VERSION}
     depends_on:
