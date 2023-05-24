@@ -41,7 +41,15 @@ const mysqldumpCommand = [
   '--databases',
   'serlo',
 ]
-const dockerComposeArgs = ['exec', '-T', 'mysql'].concat(mysqldumpCommand)
+const dockerComposeArgs = [
+  '-f',
+  'docker/net.yml',
+  '-f',
+  'docker/mysql.yml',
+  'exec',
+  '-T',
+  'mysql',
+].concat(mysqldumpCommand)
 const mysqldump = spawn('docker-compose', dockerComposeArgs)
 
 mysqldump.stdout

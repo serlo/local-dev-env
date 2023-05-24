@@ -25,10 +25,14 @@ const fileName = spawnSync('basename', [latestDump], {
 spawnSync('gsutil', ['cp', latestDump, `/tmp/${fileName}`], {
   stdio: 'inherit',
 })
-const container = spawnSync('docker-compose', ['ps', '-q', 'mysql'], {
-  stdio: 'pipe',
-  encoding: 'utf-8',
-})
+const container = spawnSync(
+  'docker-compose',
+  ['-f', 'docker/net.yml', '-f', 'docker/mysql.yml', 'ps', '-q', 'mysql'],
+  {
+    stdio: 'pipe',
+    encoding: 'utf-8',
+  }
+)
   .stdout.toString()
   .trim()
 spawnSync('unzip', ['-o', `/tmp/${fileName}`, '-d', '/tmp'], {
@@ -50,6 +54,10 @@ console.log('succeeded loading')
 async function execSql(command: string) {
   await new Promise<void>((resolve, reject) => {
     const dockerComposeExec = spawn('docker-compose', [
+      '-f',
+      'docker/net.yml',
+      '-f',
+      'docker/mysql.yml',
       'exec',
       '-T',
       'mysql',

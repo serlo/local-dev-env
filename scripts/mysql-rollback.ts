@@ -6,7 +6,18 @@ const mysqlRollbackCmd =
   'mysql --user=root --password="$MYSQL_ROOT_PASSWORD"' +
   ' < /docker-entrypoint-initdb.d/001-init.sql'
 
-const dockerComposeArgs = ['exec', '-T', 'mysql', 'sh', '-c', mysqlRollbackCmd]
+const dockerComposeArgs = [
+  '-f',
+  'docker/net.yml',
+  '-f',
+  'docker/mysql.yml',
+  'exec',
+  '-T',
+  'mysql',
+  'sh',
+  '-c',
+  mysqlRollbackCmd,
+]
 
 const sqlRollback = spawn('docker-compose', dockerComposeArgs)
 
