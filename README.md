@@ -15,6 +15,8 @@ yarn start
 # or `yarn start:detach` to have control of the terminal
 ```
 
+Take a look `package.json` for useful scripts!
+
 ## Integrating local Serlo frontend
 
 1. `cd $YOUR_FRONTEND_DIR`
