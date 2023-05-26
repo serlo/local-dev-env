@@ -20,4 +20,4 @@ for service in $@; do
   compose_files="$compose_files -f docker/$service.yml"
 done
 
-docker-compose -f docker/net.yml $compose_files up "$detach"
+docker-compose -f docker/net.yml $compose_files up $detach
