@@ -32,6 +32,7 @@
     "start:kratos:db-layer": "./scripts/start.sh kratos api",
     "start:mysql": "./scripts/start.sh mysql",
     "start:mysql:detach": "./scripts/start.sh mysql -d",
+    "start:nbp": "./scripts/start.sh nbp kratos api mysql db-layer",
     "stop": "./scripts/stop.sh",
     "stop:clear": "./scripts/stop.sh -v"
   },

@@ -43,7 +43,7 @@ First of all add `nbp` as host
 
 _why do I need it? Kratos makes a request to the url of the oauth2 provider, but since its running inside a container, it can't easily use host port. nbp is a dns that is discoverable for the kratos container, so the host can use it also._
 
-Run `yarn start`.
+Run `yarn start:nbp`.
 
 Keycloak UI is available on `nbp:11111` (username: admin, pw: admin).  
 There you have to configure Serlo as a client.
@@ -53,7 +53,7 @@ There you have to configure Serlo as a client.
 > ```
 > id: serlo
 > home and root url: http://localhost:3000
-> redirect uri: http://localhost:4433/self-service/methods/oidc/callback/nbp, http://localhost:3000/auth/login,
+> redirect uri: http://localhost:4433/self-service/methods/oidc/callback/nbp
 > ```
 
 Get the credentials and go to `kratos/config.yml`:
@@ -109,7 +109,7 @@ $
 ## Developing with Rocket Chat
 
 ```console
-yarn start:chat
+yarn start:chat -d
 yarn prepare:rocket-chat
 ```
 
