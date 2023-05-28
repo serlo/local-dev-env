@@ -6,6 +6,7 @@
   "author": "Serlo Education e.V.",
   "type": "module",
   "scripts": {
+    "docker-exec": "./scripts/docker-exec.sh",
     "format": "yarn prettier . --write",
     "kratos": "yarn start:only:kratos",
     "kratos:import-users": "RUN_IN_DOCKER=1 ./scripts/start.sh -f docker/db-layer.yml -f kratos/docker-compose.import-users-job.yml",

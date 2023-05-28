@@ -30,7 +30,7 @@ NEXT_PUBLIC_ENV=local
 3. `yarn dev`
    _Note: every time you change `.env`, you have to rerun `yarn dev`_
 
-4. cd back to this repo directory and `cp localhost-graphql-fetch.ts "$YOUR_FRONTEND_DIR/src/api/frontend/localhost-graphql-fetch.ts"` <- important for doing authenticated actions, but _do not commit this change in frontend!_, in case you are also working there.
+4. cd back to this repo directory and `cp localhost-graphql-fetch.ts "$YOUR_FRONTEND_DIR/src/pages/api/frontend/localhost-graphql-fetch.ts"` <- important for doing authenticated actions, but _do not commit this change in frontend!_, in case you are also working there.
 
 In case of registering new user head to `localhost:4436` to get the verification link.
 
