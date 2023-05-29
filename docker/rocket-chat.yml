@@ -47,8 +47,7 @@ services:
     restart: on-failure
     volumes:
       - mongodb_data:/bitnami/mongodb
-      # FIXME: investigate if dump has correct configurations
-      - ./dump:/dump
+      - ../dumps/mongodb:/dump
     environment:
       MONGODB_REPLICA_SET_MODE: primary
       MONGODB_REPLICA_SET_NAME: rs0

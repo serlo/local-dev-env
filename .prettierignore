@@ -1,6 +1,5 @@
-dump
+dumps
 node_modules
-mysql/
 .venv
 env/
 venv/

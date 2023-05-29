@@ -1,1 +1,0 @@
-{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"domain":{"$numberInt":"1"}},"name":"domain_1"}],"uuid":"6800fbfce84544bfbae3a52ecb30ae90","collectionName":"rocketchat_federation_servers","type":"collection"}

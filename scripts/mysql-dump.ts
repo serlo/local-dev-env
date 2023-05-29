@@ -22,7 +22,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const encoding = 'latin1'
 const maxInsertCmdLength = 1024 * 1024
 const repositoryBaseDir = path.dirname(__dirname)
-const sqlInitFile = path.join(repositoryBaseDir, 'mysql', '001-init.sql')
+const sqlInitFile = path.join(
+  repositoryBaseDir,
+  'dumps',
+  'mysql',
+  '001-init.sql'
+)
 
 // The option --skip-dump-date omits dumping the current date which reduces
 // the noise in diffs between dumps. The date of the last dump is implicitly
