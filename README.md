@@ -39,7 +39,7 @@ In case of registering new user head to `localhost:4436` to get the verification
 ### Integrating with Keycloak
 
 First of all add `nbp` as host  
-`sudo echo '127.0.0.1	nbp' >> /etc/hosts`
+`sudo bash -c "echo '127.0.0.1	nbp'" >> /etc/hosts`
 
 _why do I need it? Kratos makes a request to the url of the oauth2 provider, but since its running inside a container, it can't easily use host port. nbp is a dns that is discoverable for the kratos container, so the host can use it also._
 
@@ -120,6 +120,10 @@ CLIENT ID a6c3e143-****** # It will be different every time
 CLIENT SECRET rocket.chat
 ```
 
-Copy the client Id. 2. Rocket chat will be available in `localhost:3030`. Log in as admin using the username `dev` and password `123456`. 3. Go to three dots -> Administration -> Workspace -> Settings -> OAuth2 -> Serlo and paste the client id that you got earlier in the `id`. 4. `sudo bash -c "echo '127.0.0.1 hydra' >> /etc/hosts"` 5. Logout and click on Serlo. You are going to be redirected to `http://hydra:4444...`. If you haven't done step 4, just change `hydra` with `localhost`.
+Copy the client Id.  
+2. Rocket chat will be available in `localhost:3030`. Log in as admin using the username `dev` and password `123456`.  
+3. Go to three dots -> Administration -> Workspace -> Settings -> OAuth2 -> Serlo and paste the client id that you got earlier in the `id`.  
+4. `sudo bash -c "echo '127.0.0.1 hydra' >> /etc/hosts"`. This step is optional, but quite handy. Downside: at the end you are not going to see yourself inside of the rocket chat, because of dns name clash with the container.  
+5. Logout and click on Serlo. You are going to be redirected to `http://hydra:4444...`. If you haven't done step 4, just change `hydra` with `localhost`.
 
 Note that while developing you may want to change the links to chat in some files of frontend (`https://community.serlo.org` to `http://localhost:3030`).
