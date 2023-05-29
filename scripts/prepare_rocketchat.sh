@@ -4,37 +4,23 @@ echo
 echo 'Registering rocket chat as client in hydra'
 echo
 
-sleep 30
-
-docker-compose exec hydra hydra clients delete rocket.chat --endpoint http://hydra:4445
-
-docker-compose exec hydra \
-  hydra clients create \
+./scripts/docker-exec.sh hydra \
+  hydra create client \
   --skip-tls-verify \
   --endpoint http://hydra:4445 \
-  --id rocket.chat \
+  --name rocket.chat \
   --secret rocket.chat \
-  --grant-types authorization_code,refresh_token \
-  --response-types code \
+  --grant-type authorization_code,refresh_token \
+  --response-type code \
   --scope openid,offline_access,email \
-  --callbacks http://localhost:3030/_oauth/serlo \
-  --token-endpoint-auth-method client_secret_post
+  --token-endpoint-auth-method client_secret_post \
+  --redirect-uri http://localhost:3030/_oauth/serlo
 
 echo
 echo 'Dumping a basic preconfigured database for rocket chat'
 echo
 
-docker-compose exec --user root mongodb mongorestore --drop --quiet /dump/
-
-# TODO: extract to other script
-# echo
-# echo 'Creating the user dev in Kratos'
-# echo
-# yarn kratos:new-user dev serlo@dev.org 123456
-
-# echo
-# echo 'Adjusting link to rocket chat'
-# echo
+./scripts/docker-exec.sh --user root mongodb mongorestore --drop --quiet /dump/
 
 # TODO: extract to other script or wait for integration cloudflare worker
 # echo

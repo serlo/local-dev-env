@@ -1,11 +1,11 @@
 version: '3.9'
 services:
   hydra:
-    image: oryd/hydra:v1.11.8
+    image: oryd/hydra:v2.1.1
     ports:
       - '4444:4444'
       - '4445:4445'
-    command: serve all --dangerous-force-http
+    command: serve all --dev
     volumes:
       - type: volume
         source: hydra-sqlite
@@ -23,6 +23,8 @@ services:
       - SECRETS_SYSTEM=youReallyNeedToChangeThis
       - OIDC_SUBJECT_IDENTIFIERS_ENABLED=public,pairwise
       - OIDC_SUBJECT_IDENTIFIERS_PAIRWISE_SALT=youReallyNeedToChangeThis
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
     networks:
       - intranet
   rocketchat:

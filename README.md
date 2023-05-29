@@ -108,14 +108,18 @@ $
 
 ## Developing with Rocket Chat
 
+1.
+
 ```console
-yarn start:chat -d
-yarn prepare:rocket-chat
+$ yarn start:chat -d # or start:chat:kratos:db-layer if you're developing in api at the same time
+# wait +- 1 minute
+$ yarn prepare:rocket-chat
+Registering rocket chat as client in hydra
+
+CLIENT ID a6c3e143-****** # It will be different every time
+CLIENT SECRET rocket.chat
 ```
 
-Rocket chat will be available in `localhost:3030`.
-You can log in as admin using the username `dev` and password `123456`.
+Copy the client Id. 2. Rocket chat will be available in `localhost:3030`. Log in as admin using the username `dev` and password `123456`. 3. Go to three dots -> Administration -> Workspace -> Settings -> OAuth2 -> Serlo and paste the client id that you got earlier in the `id`. 4. `sudo bash -c "echo '127.0.0.1 hydra' >> /etc/hosts"` 5. Logout and click on Serlo. You are going to be redirected to `http://hydra:4444...`. If you haven't done step 4, just change `hydra` with `localhost`.
 
 Note that while developing you may want to change the links to chat in some files of frontend (`https://community.serlo.org` to `http://localhost:3030`).
-
-When you press Login with Serlo at rocket chat, you will be redirected to a url with hydra, causing error. Change it to localhost and the flow should continue normally.

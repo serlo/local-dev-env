@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"}],"uuid":"d4ec5006c75a4d769febe445e4a49bae","collectionName":"ufsTokens","type":"collection"}
