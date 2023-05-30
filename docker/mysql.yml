@@ -8,5 +8,6 @@ services:
       - ../dumps/mysql:/docker-entrypoint-initdb.d:z
     environment:
       - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=serlo
     networks:
       - intranet
