@@ -12,7 +12,7 @@ export abstract class StringTransform extends Transform {
     assert.strictEqual(
       encoding,
       'buffer',
-      '`chunk` should always be a Buffer in our implementation.'
+      '`chunk` should always be a Buffer in our implementation.',
     )
 
     this.transformString(chunk.toString(this.encoding))
