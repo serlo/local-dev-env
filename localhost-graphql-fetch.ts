@@ -8,7 +8,7 @@ import { ParsedArgs } from '@/api/graphql-fetch'
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   const { query, variables } = req.body as ParsedArgs
 

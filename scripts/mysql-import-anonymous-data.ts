@@ -12,7 +12,7 @@ const latestDump = spawnSync(
   {
     stdio: 'pipe',
     encoding: 'utf-8',
-  }
+  },
 )
   .stdout.toString()
   .trim()
@@ -31,7 +31,7 @@ const container = spawnSync(
   {
     stdio: 'pipe',
     encoding: 'utf-8',
-  }
+  },
 )
   .stdout.toString()
   .trim()
@@ -47,7 +47,7 @@ spawnSync('docker', ['cp', '/tmp/user.csv', `${container}:/tmp/user.csv`], {
 await execSql('serlo < /tmp/mysql.sql')
 console.log('succeeded dump')
 await execSql(
-  "-e \"LOAD DATA LOCAL INFILE '/tmp/user.csv' INTO TABLE user FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 ROWS;\" serlo"
+  "-e \"LOAD DATA LOCAL INFILE '/tmp/user.csv' INTO TABLE user FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 ROWS;\" serlo",
 )
 console.log('succeeded loading')
 

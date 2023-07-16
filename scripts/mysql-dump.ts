@@ -26,7 +26,7 @@ const sqlInitFile = path.join(
   repositoryBaseDir,
   'dumps',
   'mysql',
-  '001-init.sql'
+  '001-init.sql',
 )
 
 // The option --skip-dump-date omits dumping the current date which reduces

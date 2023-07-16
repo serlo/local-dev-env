@@ -18,14 +18,14 @@ connection.connect(async (error) => {
       allIdentities.map(async (identity) => {
         await kratos.adminDeleteIdentity(identity.id)
         console.log(identity.traits.username + ' was deleted')
-      })
+      }),
     )
   }
 
   connection.query('SELECT * FROM user', async (error, result) => {
     if (error) throw error
     const usersWithValidUsername = result.filter((user) =>
-      user.username.match(/^[\w\-]+$/g)
+      user.username.match(/^[\w\-]+$/g),
     )
     await importUsers(usersWithValidUsername)
     console.log('Successful Import of Users')
