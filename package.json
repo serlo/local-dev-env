@@ -38,7 +38,7 @@
     "stop:clear": "./scripts/stop.sh -v"
   },
   "dependencies": {
-    "@ory/client": "0.2.0-alpha.4",
+    "@ory/client": "1.1.41",
     "@types/node": "^18.11.15",
     "js-sha1": "^0.6.0",
     "mysql": "^2.18.1",
