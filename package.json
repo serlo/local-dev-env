@@ -2,7 +2,7 @@
   "name": "serlo-local-dev-env",
   "version": "0.0.0",
   "repository": "git@github.com:serlo/local-dev-env.git",
-  "license": "Apache License 2.0",
+  "license": "Apache-2.0",
   "author": "Serlo Education e.V.",
   "type": "module",
   "scripts": {
@@ -38,14 +38,15 @@
     "stop:clear": "./scripts/stop.sh -v"
   },
   "dependencies": {
-    "@ory/client": "0.2.0-alpha.4",
-    "@types/node": "^18.11.15",
+    "@ory/client": "1.1.41",
+    "@types/node": "^18.16.19",
     "js-sha1": "^0.6.0",
     "mysql": "^2.18.1",
-    "prettier": "^2.8.1",
-    "prettier-plugin-packagejson": "^2.3.0",
-    "prettier-plugin-sh": "^0.12.8",
+    "prettier": "^3.0.0",
+    "prettier-plugin-packagejson": "^2.4.5",
+    "prettier-plugin-sh": "^0.13.1",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.4"
-  }
+    "typescript": "^5.1.6"
+  },
+  "packageManager": "yarn@3.6.1"
 }

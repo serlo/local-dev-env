@@ -23,7 +23,7 @@ const sqlInitFile = path.join(
   repositoryBaseDir,
   'mysql',
   'docker-entrypoint-initdb.d',
-  '001-init.sql'
+  '001-init.sql',
 )
 
 // The option --skip-dump-date omits dumping the current date which reduces
