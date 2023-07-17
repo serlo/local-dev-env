@@ -13,9 +13,9 @@ connection.connect(async (error) => {
         connection.query(
           'SELECT last_login FROM user WHERE id = ?',
           [identity.metadata_public.legacy_id],
-          (error, result) => importLastLogin(result, error, identity)
+          (error, result) => importLastLogin(result, error, identity),
         )
-      })
+      }),
     )
   }
   connection.end()
@@ -42,7 +42,7 @@ async function importLastLogin(result, error, identity) {
     console.log(
       `no last login imported for ${identity.traits.username} legacy ID  ${
         identity.metadata_public.legacy_id
-      }, error: ${error}, result: ${JSON.stringify(result)}`
+      }, error: ${error}, result: ${JSON.stringify(result)}`,
     )
   }
 }

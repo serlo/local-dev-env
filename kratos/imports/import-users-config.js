@@ -17,7 +17,7 @@ export const config = {
 export const kratos = new V0alpha2Api(
   new Configuration({
     basePath: config.kratosHost,
-  })
+  }),
 )
 
 export const connection = mysql.createConnection({

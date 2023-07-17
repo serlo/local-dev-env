@@ -19,7 +19,7 @@ export class ConcatenateInsertCommands extends LineTransform {
     if (line.startsWith(insertTerm)) {
       assert.ok(
         line.endsWith('\n'),
-        'This implementation asserts that an INSERT command is never the last line.'
+        'This implementation asserts that an INSERT command is never the last line.',
       )
 
       const tableStart = insertTerm.length + 1

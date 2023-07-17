@@ -7,7 +7,7 @@ connection.connect(async (error) => {
   connection.query('SELECT * FROM user', async (error, result) => {
     if (error) throw error
     const usersWithValidUsername = result.filter(
-      (user) => !user.username.match(/^[\w\-]+$/g)
+      (user) => !user.username.match(/^[\w\-]+$/g),
     )
     await importUsersWithInvalidUsernames(usersWithValidUsername)
     console.log('Successful Import of Users')
@@ -50,7 +50,7 @@ async function importUsersWithInvalidUsernames(users) {
       ],
     }
     console.log(
-      'Importing user ' + newUsername + ' previously ' + legacyUser.username
+      'Importing user ' + newUsername + ' previously ' + legacyUser.username,
     )
     await kratos.adminCreateIdentity(user).catch((error) => {
       throw new Error(error.message + ' while importing ' + legacyUser.id)
