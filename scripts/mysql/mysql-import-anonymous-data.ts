@@ -9,7 +9,7 @@ const latestDump = spawnSync(
   {
     stdio: 'pipe',
     encoding: 'utf-8',
-  }
+  },
 )
   .stdout.toString()
   .trim()
@@ -38,7 +38,7 @@ execCommand(`pv /tmp/mysql.sql | serlo-mysql`)
 
 info('Start importing anonymized user data')
 execSql(
-  "LOAD DATA LOCAL INFILE '/tmp/user.csv' INTO TABLE user FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 ROWS;"
+  "LOAD DATA LOCAL INFILE '/tmp/user.csv' INTO TABLE user FIELDS TERMINATED BY '\t' LINES TERMINATED BY '\n' IGNORE 1 ROWS;",
 )
 
 function execSql(command: string) {
@@ -57,5 +57,6 @@ function runCmd(cmd: string, args: string[]) {
 }
 
 function info(message: string) {
+  // eslint-disable-next-line no-console
   console.error(`INFO: ${message}`)
 }
