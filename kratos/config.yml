@@ -113,7 +113,7 @@ selfservice:
                   config:
                     name: Authorization
                     value: Bearer # Fill it with your data
-                    in: header  
+                    in: header
             - hook: session
           default_browser_return_url: http://localhost:3000/auth/login
     verification:
