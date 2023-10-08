@@ -1,12 +1,12 @@
 version: v0.7.1-alpha.1
 
-dsn: memory
+dev: true
+
+dsn: postgres://serlo:secret@postgres:5432/kratos?sslmode=disable&max_conns=20&max_idle_conns=4
 
 serve:
   public:
     base_url: http://localhost:4433/
-    cors:
-      enabled: true
   admin:
     base_url: http://localhost:4434/
 
@@ -22,6 +22,16 @@ selfservice:
         identifier_similarity_check_enabled: false
     link:
       enabled: true
+    oidc:
+      enabled: true
+      config:
+        providers:
+          - id: nbp
+            provider: generic
+            client_id: serlo
+            client_secret: H8t6WKWtGwFjqNfuAjqxrwCfsdznMAfj
+            issuer_url: http://nbp:11111/realms/master
+            mapper_url: file:///etc/config/kratos/user_mapper.jsonnet
 
   flows:
     error:
@@ -36,6 +46,16 @@ selfservice:
         password:
           hooks:
             - hook: require_verified_address
+            - hook: web_hook
+              config:
+                url: http://host.docker.internal:3001/kratos/updateLastLogin
+                method: POST
+                body: file:///etc/config/kratos/identity_id.jsonnet
+                response:
+                  ignore: true
+        oidc:
+          default_browser_return_url: http://localhost:3000/auth/login
+
     registration:
       ui_url: http://localhost:3000/auth/registration
       after:
@@ -44,8 +64,8 @@ selfservice:
             config:
               url: http://host.docker.internal:3001/kratos/register
               method: POST
-              body: file:///etc/config/kratos/register_legacy.jsonnet
               can_interrupt: true
+              body: file:///etc/config/kratos/identity_id.jsonnet
               auth:
                 type: api_key
                 config:
@@ -67,8 +87,38 @@ selfservice:
                   value: Bearer # Fill it with your data
                   in: header
 
+        oidc:
+          hooks:
+            - hook: web_hook
+              config:
+                url: http://host.docker.internal:3001/kratos/register
+                method: POST
+                body: file:///etc/config/kratos/identity_id.jsonnet
+                auth:
+                  type: api_key
+                  config:
+                    name: x-kratos-key
+                    value: api.serlo.org-kratos-secret
+                    in: header
+            - hook: web_hook
+              config:
+                url: # Fill it with your data https://??.api.mailchimp.com/3.0/lists/??/members 
+                method: POST
+                body: file:///etc/config/kratos/add_to_newsletter.jsonnet
+                can_interrupt: false
+                response:
+                  ignore: true
+                auth:
+                  type: api_key
+                  config:
+                    name: Authorization
+                    value: Bearer # Fill it with your data
+                    in: header  
+            - hook: session
+          default_browser_return_url: http://localhost:3000/auth/login
     verification:
       enabled: true
+      use: link
       ui_url: http://localhost:3000/auth/verification
     recovery:
       enabled: true

@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"_updatedAt":{"$numberInt":"1"}},"name":"_updatedAt_1"}],"uuid":"a5219e8863934cc39a0308eb623ff864","collectionName":"rocketchat_smarsh_history","type":"collection"}

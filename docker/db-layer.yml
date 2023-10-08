@@ -1,0 +1,15 @@
+version: '3.9'
+services:
+  db-layer:
+    image: eu.gcr.io/serlo-shared/serlo-org-database-layer:${DB_LAYER_VERSION}
+    ports:
+      - '8080:8080'
+    command: ./server
+    environment:
+      - DATABASE_MAX_CONNECTIONS=5
+      - DATABASE_URL=mysql://root:secret@host.docker.internal:3306/serlo
+      - ENV=development
+    networks:
+      - intranet
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

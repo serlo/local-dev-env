@@ -5,7 +5,8 @@ curl --request POST -sL \
   --data "{
     \"traits\": {
       \"username\": \"$1\",
-      \"email\": \"$2\"
+      \"email\": \"$2\",
+      \"language\": "en"
     }, 
     \"credentials\": { 
       \"password\": {
@@ -15,6 +16,6 @@ curl --request POST -sL \
         }
       },
     \"metadata_public\" : { 
-      \"legacy_id\": 1
+      \"legacy_id\": $4
     }
   }" http://localhost:4434/identities

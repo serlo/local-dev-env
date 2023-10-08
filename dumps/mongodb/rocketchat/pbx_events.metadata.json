@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"unique":true,"key":{"uniqueId":{"$numberInt":"1"}},"name":"uniqueId_1"}],"uuid":"fd9f94716f4a4ef08aec1f1f12db12f8","collectionName":"pbx_events","type":"collection"}

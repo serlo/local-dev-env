@@ -1,0 +1,1 @@
+{"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_"},{"v":{"$numberInt":"2"},"key":{"_updatedAt":{"$numberInt":"1"}},"name":"_updatedAt_1"}],"uuid":"e434ffa141ce4cdcb2977773d725c372","collectionName":"rocketchat_federation_dns_cache","type":"collection"}

@@ -21,7 +21,8 @@
           "ory.sh/kratos": {
             "credentials": { "password": { "identifier": true } }
           },
-          "pattern": "^[\\w\\-]+$"
+          "pattern": "^[\\w\\-]+$",
+          "maxLength": 32
         },
         "newsletterOptIn": {
           "type": "boolean"
@@ -37,9 +38,13 @@
         },
         "language": {
           "type": "string"
+        },
+        "interest": {
+          "type": "string",
+          "enum": ["parent", "teacher", "pupil", "student", "other", ""]
         }
       },
-      "required": ["email", "username"],
+      "required": ["email", "username", "interest"],
       "additionalProperties": false
     },
     "metadata_public": {
@@ -51,6 +56,10 @@
       },
       "roles": {
         "type": "array of strings",
+        "required": true
+      },
+      "lastLogin": {
+        "type": "string",
         "required": true
       }
     },
