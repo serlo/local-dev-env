@@ -74,18 +74,17 @@ selfservice:
                   in: header
           - hook: web_hook
             config:
-              url: # Fill it with your data https://??.api.mailchimp.com/3.0/lists/??/members 
+              url: https://<your_dc>.api.mailchimp.com/3.0/lists/<your_list_id>/members
               method: POST
               body: file:///etc/config/kratos/add_to_newsletter.jsonnet
               can_interrupt: false
               response:
                 ignore: true
               auth:
-                type: api_key
+                type: basic_auth
                 config:
-                  name: Authorization
-                  value: Bearer # Fill it with your data
-                  in: header
+                  user: serlo
+                  password: put_here_your_mailchimp_api_key
 
         oidc:
           hooks:
@@ -102,18 +101,17 @@ selfservice:
                     in: header
             - hook: web_hook
               config:
-                url: # Fill it with your data https://??.api.mailchimp.com/3.0/lists/??/members 
+                url: https://<your_dc>.api.mailchimp.com/3.0/lists/<your_list_id>/members
                 method: POST
                 body: file:///etc/config/kratos/add_to_newsletter.jsonnet
                 can_interrupt: false
                 response:
                   ignore: true
                 auth:
-                  type: api_key
+                  type: basic_auth
                   config:
-                    name: Authorization
-                    value: Bearer # Fill it with your data
-                    in: header
+                    user: serlo
+                    password: put_here_your_mailchimp_api_key
             - hook: session
           default_browser_return_url: http://localhost:3000/auth/login
     verification:
