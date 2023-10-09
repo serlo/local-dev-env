@@ -64,6 +64,7 @@ selfservice:
             config:
               url: http://host.docker.internal:3001/kratos/register
               method: POST
+              can_interrupt: true
               body: file:///etc/config/kratos/identity_id.jsonnet
               auth:
                 type: api_key
@@ -71,6 +72,20 @@ selfservice:
                   name: x-kratos-key
                   value: api.serlo.org-kratos-secret
                   in: header
+          - hook: web_hook
+            config:
+              url: https://<your_dc>.api.mailchimp.com/3.0/lists/<your_list_id>/members
+              method: POST
+              body: file:///etc/config/kratos/add_to_newsletter.jsonnet
+              can_interrupt: false
+              response:
+                ignore: true
+              auth:
+                type: basic_auth
+                config:
+                  user: serlo
+                  password: put_here_your_mailchimp_api_key
+
         oidc:
           hooks:
             - hook: web_hook
@@ -84,6 +99,19 @@ selfservice:
                     name: x-kratos-key
                     value: api.serlo.org-kratos-secret
                     in: header
+            - hook: web_hook
+              config:
+                url: https://<your_dc>.api.mailchimp.com/3.0/lists/<your_list_id>/members
+                method: POST
+                body: file:///etc/config/kratos/add_to_newsletter.jsonnet
+                can_interrupt: false
+                response:
+                  ignore: true
+                auth:
+                  type: basic_auth
+                  config:
+                    user: serlo
+                    password: put_here_your_mailchimp_api_key
             - hook: session
           default_browser_return_url: http://localhost:3000/auth/login
     verification:

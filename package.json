@@ -13,7 +13,7 @@
     "kratos:new-user": "./kratos/new-user.sh",
     "kratos:rebuild": "./scripts/docker-exec.sh up -d --force-recreate --no-deps --build kratos",
     "mongo:dump": "./scripts/docker-exec.sh -u root mongodb mongodump && docker-compose -f docker/net.yml -f docker/rocket-chat.yml cp mongodb:/dump ./dumps/mongodb",
-    "mysql": "docker compose exec mysql serlo-mysql",
+    "mysql": "./scripts/docker-exec.sh mysql serlo-mysql",
     "mysql:import-anonymous-data": "ts-node --experimental-specifier-resolution=node scripts/mysql/mysql-import-anonymous-data",
     "mysql:rollback": "docker compose --file docker/net.yml --file docker/mysql.yml exec mysql sh -c \"pv /docker-entrypoint-initdb.d/001-init.sql | serlo-mysql\"",
     "postgres": "./scripts/docker-exec.sh postgres psql -U serlo -d kratos",
