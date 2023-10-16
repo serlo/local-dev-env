@@ -1,4 +1,4 @@
-version: v0.7.1-alpha.1
+version: v1.0.0
 
 dev: true
 
@@ -74,7 +74,7 @@ selfservice:
                   in: header
           - hook: web_hook
             config:
-              url: https://<your_dc>.api.mailchimp.com/3.0/lists/<your_list_id>/members
+              url: https://<YOUR_DC>.api.mailchimp.com/3.0/lists/<YOUR_LIST_ID>/members
               method: POST
               body: file:///etc/config/kratos/add_to_newsletter.jsonnet
               can_interrupt: false
@@ -84,7 +84,7 @@ selfservice:
                 type: basic_auth
                 config:
                   user: serlo
-                  password: put_here_your_mailchimp_api_key
+                  password: PUT_HERE_YOUR_MAILCHIMP_API_KEY
 
         oidc:
           hooks:
