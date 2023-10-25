@@ -8,7 +8,8 @@ services:
     networks:
       - intranet
   api:
-    image: eu.gcr.io/serlo-shared/api-server:${API_VERSION}
+    image: eu.gcr.io/serlo-shared/api-server:latest
+    pull_policy: always
     command: yarn start
     depends_on:
       - redis
