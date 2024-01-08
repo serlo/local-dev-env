@@ -65,12 +65,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@ory/client@npm:1.4.6":
-  version: 1.4.6
-  resolution: "@ory/client@npm:1.4.6"
+"@ory/client@npm:1.4.9":
+  version: 1.4.9
+  resolution: "@ory/client@npm:1.4.9"
   dependencies:
     axios: ^0.27.2
-  checksum: a81bd2da93dd4bc1e630d6817453eac380c8ce4c5a5f13d52f4f7bc762f1c8444af8e32ddf6b33b96ca846a77b6d30dfbc3e6c86a36a539ff168849b2647e72e
+  checksum: 8ee0f231b5162553ceff626f71e26b5076afcc5f60d593338b31867fa32efc0244ae0ae40af5698607c66c656249e7f6d6e226bd56b95842387bc1a3335dc3ac
   languageName: node
   linkType: hard
 
@@ -830,7 +830,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "serlo-local-dev-env@workspace:."
   dependencies:
-    "@ory/client": 1.4.6
+    "@ory/client": 1.4.9
     "@types/node": ^18.19.3
     js-sha1: ^0.6.0
     mysql: ^2.18.1
