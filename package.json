@@ -18,6 +18,7 @@
     "mysql:rollback": "docker compose --file docker/net.yml --file docker/mysql.yml exec mysql sh -c \"pv /docker-entrypoint-initdb.d/001-init.sql | serlo-mysql\"",
     "postgres": "./scripts/docker-exec.sh postgres psql -U serlo -d kratos",
     "postgres:dump": "./scripts/docker-exec.sh postgres pg_dump --clean --if-exists kratos --user serlo > dumps/postgres/001-init.sql",
+    "postgres:import-anonymous-data": "./scripts/postgres-import-anonymous-data.sh",
     "postgres:rollback": "./scripts/docker-exec.sh -T postgres bash -c 'psql -U serlo kratos < /docker-entrypoint-initdb.d/001-init.sql'",
     "prepare:rocket-chat": "./scripts/prepare_rocketchat.sh",
     "redis:cli": "./scripts/redis.sh",
