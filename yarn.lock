@@ -373,10 +373,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-sha1@npm:^0.6.0":
-  version: 0.6.0
-  resolution: "js-sha1@npm:0.6.0"
-  checksum: f12adcdac8da2b42eb40b9f83003bd085f647a8ca4364ac736462714e1b8681aab97efda09737889e001a7df569c8b35f28f35c638a3af93ef586281f92b2ca5
+"js-sha1@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "js-sha1@npm:0.7.0"
+  checksum: c0dfb69df9979025f7ebc7a91ebbf43920d736c584c83cfc94747241dba6be27dc2a5afdc3e8fa178cc54908123677d435f2c65c256c6d3f53d8179a2650dba2
   languageName: node
   linkType: hard
 
@@ -547,7 +547,7 @@ __metadata:
   dependencies:
     "@ory/client": 1.5.1
     "@types/node": ^18.19.10
-    js-sha1: ^0.6.0
+    js-sha1: ^0.7.0
     mysql: ^2.18.1
     prettier: ^3.2.2
     prettier-plugin-packagejson: ^2.4.9
