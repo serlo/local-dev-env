@@ -1,0 +1,21 @@
+name: CI Checks
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  merge_group:
+jobs:
+  yarn:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: serlo/configure-repositories/actions/setup-node@main
+      - run: yarn --check-cache
+
+  prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: serlo/configure-repositories/actions/setup-node@main
+      - run: yarn prettier . --check

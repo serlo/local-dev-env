@@ -3,9 +3,9 @@
     "allowSyntheticDefaultImports": true,
     "module": "ESNext",
     "moduleResolution": "Node",
-    "target": "ESNext"
+    "target": "ESNext",
   },
   "ts-node": {
-    "esm": true
-  }
+    "esm": true,
+  },
 }
