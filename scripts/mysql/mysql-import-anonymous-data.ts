@@ -59,10 +59,23 @@ function downloadDump(dumpPath: string, fileName: string) {
 }
 
 function getMySQLContainer(): string | null {
-  const container = spawnSync('docker', ['compose', 'ps', '-q', 'mysql'], {
-    stdio: 'pipe',
-    encoding: 'utf-8',
-  })
+  const container = spawnSync(
+    'docker',
+    [
+      'compose',
+      '-f',
+      'docker/net.yml',
+      '-f',
+      'docker/mysql.yml',
+      'ps',
+      '-q',
+      'mysql',
+    ],
+    {
+      stdio: 'pipe',
+      encoding: 'utf-8',
+    },
+  )
     .stdout.toString()
     .trim()
 
@@ -93,7 +106,18 @@ function execSql(command: string) {
 }
 
 function execCommand(command: string) {
-  const args = ['compose', 'exec', 'mysql', 'sh', '-c', `${command}`]
+  const args = [
+    'compose',
+    '-f',
+    'docker/net.yml',
+    '-f',
+    'docker/mysql.yml',
+    'exec',
+    'mysql',
+    'sh',
+    '-c',
+    `${command}`,
+  ]
 
   runCmd('docker', args)
 }
