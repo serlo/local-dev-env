@@ -46,7 +46,6 @@ def main():
                 },
             )
             kratos_response = None
-            print(account["metadata_public"] is dict)
             if response.status_code == 200:
                 legacy_id = {"legacy_id": response.json()["userId"]}
                 kratos_response = kratos_admin.update_identity(

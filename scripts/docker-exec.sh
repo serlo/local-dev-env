@@ -10,4 +10,4 @@ service=$1
 
 shift
 
-docker-compose $all_docker_compose_files exec $service $@
+docker compose $all_docker_compose_files exec $service $@

@@ -6,4 +6,4 @@ for file in ./docker/*; do
   compose_files+="$compose_files -f $file"
 done
 
-docker-compose $compose_files down --remove-orphans $@
+docker compose $compose_files down --remove-orphans $@
