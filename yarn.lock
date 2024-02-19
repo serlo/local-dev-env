@@ -109,12 +109,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.19.14":
-  version: 18.19.14
-  resolution: "@types/node@npm:18.19.14"
+"@types/node@npm:^18.19.17":
+  version: 18.19.17
+  resolution: "@types/node@npm:18.19.17"
   dependencies:
     undici-types: ~5.26.4
-  checksum: 3d42b50e649f18c6ca7044714eaeb51ba5fda463c845eeb1973bcbbfcab8e93179501fbf865e675cb0c7a5e59f7ea18eca8296b52c2455c856aa45c77ae815dc
+  checksum: f04c46ddcb33eb8b2ae6e6ae1a50b40bd5478462f8e80ea2023325e256ac10c4d033a2f62f49cdeba156a570979b1fc6cb6d9809167e2a60a18da80c32da0733
   languageName: node
   linkType: hard
 
@@ -554,7 +554,7 @@ __metadata:
   resolution: "serlo-local-dev-env@workspace:."
   dependencies:
     "@ory/client": 1.6.1
-    "@types/node": ^18.19.14
+    "@types/node": ^18.19.17
     js-sha1: ^0.7.0
     mysql: ^2.18.1
     prettier: ^3.2.5

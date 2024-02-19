@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@ory/client": "1.6.1",
-    "@types/node": "^18.19.14",
+    "@types/node": "^18.19.17",
     "js-sha1": "^0.7.0",
     "mysql": "^2.18.1",
     "prettier": "^3.2.5",
